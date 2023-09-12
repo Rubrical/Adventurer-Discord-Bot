@@ -37,7 +37,8 @@ client.on(Events.InteractionCreate, async interaction => {
     const command = interaction.client.commands.get(interaction.commandName);
     if (!command) {
         console.error("Couldn't find command");
-        return
+        await interaction.reply("Comando não encontrado");
+        return;
     }
     try {
         await command.execute(interaction);
