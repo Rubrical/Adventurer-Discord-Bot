@@ -45,10 +45,5 @@ client.on(Events.InteractionCreate, async interaction => {
         await command.execute(interaction);
     } catch (error) {
         console.error(error);
-        if (interaction.replied || interaction.deferred) {
-            await interaction.followUp({ content: 'Erro desconhecido, comunique ao desenvolvedor', ephemeral: true });
-        } else {
-            await interaction.reply({ content: 'Erro desconhecido, comunique ao desenvolvedor', ephemeral: true });
-        }
     }
 });
