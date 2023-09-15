@@ -11,6 +11,7 @@ module.exports = {
         ),
 
     async execute(interaction){
+        const usageMessage = "Formato inválido. Utilize o formato: (quantidade_dados)d(faces) +/- número_extra +/- número extra sem os parênteses (os números extras são opcionais).";
         try {
             const dice = interaction.options.getString("roll_invisible");
             const match = dice.match(/(\d+)d(\d+)\s?([+\-]?\s?\d+)?\s?([+\-]?\s?\d+)?/);
@@ -33,13 +34,17 @@ module.exports = {
             total_sum += other_num;
 
             if (isNaN(total_sum)) {
-                throw new Error("Formato inválido. Utilize o formato: (quantidade_dados)d(faces) +/- número_extra +/- número extra sem os parênteses (os números extras são opcionais).");
+                throw new Error(usageMessage);
             }
 
              await interaction.reply({content: `\` ${total_sum} \` ⇐ [${results.join(', ')}] ${dice}`, ephemeral: true});
         } catch (error) {
-            await interaction.reply("Erro desconhecido, comunique ao desenvolvedor")
-             console.error(error.message);
+            if (TypeError){
+                await interaction.reply(usageMessage);
+            }
+            await interaction.reply({content: "Erro desconhecido, comunique ao desenvolvedor", ephemeral: true});
+            console.error(error.message);
+            console.error(error);
         }
 
     }
