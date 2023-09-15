@@ -12,7 +12,7 @@ module.exports = {
 
     async execute(interaction){
         try {
-            const dice = interaction.options.getString("roll");
+            const dice = interaction.options.getString("roll_invisible");
             const match = dice.match(/(\d+)d(\d+)\s?([+\-]?\s?\d+)?\s?([+\-]?\s?\d+)?/);
 
             const qty_of_dices = parseInt(match[1]);
