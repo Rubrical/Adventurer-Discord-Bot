@@ -40,7 +40,7 @@ module.exports = {
              await interaction.reply({content: `\` ${total_sum} \` ⇐ [${results.join(', ')}] ${dice}`, ephemeral: true});
         } catch (error) {
             if (TypeError){
-                await interaction.reply({content: usageMessage, ephemeral: true)};
+                await interaction.reply({content: usageMessage, ephemeral: true});
             }
             await interaction.reply({content: "Erro desconhecido, comunique ao desenvolvedor", ephemeral: true});
             console.error(error.message);
